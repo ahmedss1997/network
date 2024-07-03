@@ -87,26 +87,6 @@ export const demoMenus = [
   {
     title: "Dashboard",
     icon: DashBoard,
-    child: [
-      {
-        title: "Analytics",
-        href: "/dashboard",
-        icon: Graph,
-        image: analyticsPage,
-      },
-      {
-        title: "Ecommerce",
-        href: "/ecommerce",
-        icon: Cart,
-        image: ecommercePage,
-      },
-      {
-        title: "Project ",
-        href: "/project",
-        icon: ClipBoard,
-        image: projectPage,
-      },
-    ],
   },
   {
     title: "Application",
@@ -270,8 +250,8 @@ export const demoMenus = [
       {
         showAll: true,
         href: "/",
-        image: dashboardBlur
-      }
+        image: dashboardBlur,
+      },
     ],
   },
 
@@ -279,7 +259,6 @@ export const demoMenus = [
     title: "Pages",
     icon: Files,
     child: [
-
       {
         title: "Sign In 01",
         href: "/auth/login",
@@ -308,8 +287,8 @@ export const demoMenus = [
       {
         showAll: true,
         href: "/",
-        image: dashboardBlur
-      }
+        image: dashboardBlur,
+      },
     ],
   },
   {
@@ -337,8 +316,8 @@ export const demoMenus = [
       {
         showAll: true,
         href: "/",
-        image: dashboardBlur
-      }
+        image: dashboardBlur,
+      },
     ],
   },
   {
@@ -384,8 +363,7 @@ export const demoMenus = [
         href: "/charts-unovis-area",
         icon: "heroicons:information-circle",
         image: chartUnovis,
-      }
-
+      },
     ],
   },
   {
@@ -486,4 +464,4 @@ export const menus = [
     ],
   },
 ];
-export type Menu = typeof menus[number];
+export type Menu = (typeof menus)[number];

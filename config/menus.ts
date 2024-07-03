@@ -1,4 +1,3 @@
-
 import {
   Application,
   Chart,
@@ -44,18 +43,15 @@ import {
   Mail,
 } from "@/components/svg";
 
-
 export interface MenuItemProps {
   title: string;
   icon: any;
   href?: string;
   child?: MenuItemProps[];
   megaMenu?: MenuItemProps[];
-  multi_menu? : MenuItemProps[]
-  nested?: MenuItemProps[]
+  multi_menu?: MenuItemProps[];
+  nested?: MenuItemProps[];
   onClick: () => void;
-
-  
 }
 
 export const menusConfig = {
@@ -63,23 +59,6 @@ export const menusConfig = {
     {
       title: "Dashboard",
       icon: DashBoard,
-      child: [
-        {
-          title: "Analytics",
-          href: "/dashboard",
-          icon: Graph,
-        },
-        {
-          title: "Ecommerce",
-          href: "/ecommerce",
-          icon: Cart,
-        },
-        {
-          title: "Project ",
-          href: "/project",
-          icon: ClipBoard,
-        },
-      ],
     },
     {
       title: "Application",
@@ -992,23 +971,6 @@ export const menusConfig = {
       {
         title: "Dashboard",
         icon: DashBoard,
-        child: [
-          {
-            title: "Analytics",
-            href: "/dashboard",
-            icon: Graph,
-          },
-          {
-            title: "Ecommerce",
-            href: "/ecommerce",
-            icon: Cart,
-          },
-          {
-            title: "project ",
-            href: "/project",
-            icon: ClipBoard,
-          },
-        ],
       },
       {
         title: "Application",
@@ -2026,25 +1988,6 @@ export const menusConfig = {
         title: "Dashboard",
         icon: DashBoard,
         href: "/dashboard",
-       
-        
-        child: [
-          {
-            title: "Analytics",
-            href: "/dashboard",
-            icon: Graph,
-          },
-          {
-            title: "Ecommerce",
-            href: "/ecommerce",
-            icon: Cart,
-          },
-          {
-            title: "Project ",
-            href: "/project",
-            icon: ClipBoard,
-          },
-        ],
       },
       {
         isHeader: true,
@@ -2216,7 +2159,7 @@ export const menusConfig = {
         title: "Utility",
         icon: Diamond,
         href: "#",
-        
+
         child: [
           {
             title: "Blank Page",
@@ -2236,7 +2179,7 @@ export const menusConfig = {
         title: "Invoice",
         icon: Files,
         href: "#",
-        
+
         child: [
           {
             title: "Create Invoice",
@@ -2257,7 +2200,7 @@ export const menusConfig = {
         title: "Error",
         icon: Error,
         href: "#",
-        
+
         child: [
           {
             title: "Error 401",
@@ -3004,7 +2947,6 @@ export const menusConfig = {
   },
 };
 
-
-export type ModernNavType = (typeof menusConfig.sidebarNav.modern)[number]
-export type ClassicNavType = (typeof menusConfig.sidebarNav.classic)[number]
-export type MainNavType = (typeof menusConfig.mainNav)[number]
+export type ModernNavType = (typeof menusConfig.sidebarNav.modern)[number];
+export type ClassicNavType = (typeof menusConfig.sidebarNav.classic)[number];
+export type MainNavType = (typeof menusConfig.mainNav)[number];
