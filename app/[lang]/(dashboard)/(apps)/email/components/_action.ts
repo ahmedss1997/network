@@ -1,9 +1,9 @@
 "use server";
-import { type Mail } from "@/app/api/email/data";
+import { type Mail } from "@/api/email/data";
 import { createEmail, deleteEmail, getMail } from "@/config/email.config";
 import { revalidatePath } from "next/cache";
 
-export const getMailAction = async (id:Mail["id"]) => {
+export const getMailAction = async (id: Mail["id"]) => {
   try {
     const response = await getMail(id);
     revalidatePath("/email");

@@ -3,7 +3,7 @@ import img1 from "@/public/images/all-img/headphone-2.png";
 import { faker } from "@faker-js/faker";
 import { formatDate } from "@/lib/utils";
 import { statuses, generateAssignments, priorities } from "../projects/data";
-import { demoBoards } from "@/app/api/boards/data";
+import { demoBoards } from "@/api/boards/data";
 export const tasks = [
   {
     boardId: demoBoards[0].id,
@@ -200,7 +200,6 @@ function generateSubTasks(numItems: number) {
     const numAssign = faker.number.int({ min: 1, max: 10 });
     const assignObjects = generateAssignments(numAssign);
 
-   
     const newItem = {
       id: `78032cb9-2170-4e6f-bd3b-33f1480b3fd-${i}`,
       title: faker.hacker.ingverb(),
@@ -220,6 +219,5 @@ function generateSubTasks(numItems: number) {
 }
 
 export const subTasks = generateSubTasks(6);
-
 
 export type SubTask = (typeof subTasks)[number];

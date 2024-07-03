@@ -18,11 +18,11 @@ import {
   swapBoard,
 } from "@/config/project-config";
 import { revalidatePath } from "next/cache";
-import { type Project } from "@/app/api/projects/data";
-import { type Board } from "@/app/api/boards/data";
-import { type Task } from "@/app/api/tasks/data";
-import { type SubTask } from "@/app/api/tasks/data";
-import { type Comment } from "@/app/api/comments/data";
+import { type Project } from "@/api/projects/data";
+import { type Board } from "@/api/boards/data";
+import { type Task } from "@/api/tasks/data";
+import { type SubTask } from "@/api/tasks/data";
+import { type Comment } from "@/api/comments/data";
 
 export async function addProjectAction(project: Project) {
   await createProject(project);
@@ -34,7 +34,10 @@ export const deleteProjectAction = async (id: Project["id"]) => {
   revalidatePath("/");
 };
 
-export const editProjectAction = async (id: Project["id"], project: Project) => {
+export const editProjectAction = async (
+  id: Project["id"],
+  project: Project
+) => {
   await updateProject(id, project);
   revalidatePath("/");
 };
@@ -74,7 +77,10 @@ export const deleteTaskAction = async (id: Task["id"]) => {
   await deleteTask(id);
   revalidatePath("/");
 };
-export const updateTaskAction = async (taskId: Task["id"], updatedFields: Task) => {
+export const updateTaskAction = async (
+  taskId: Task["id"],
+  updatedFields: Task
+) => {
   await updateTask(taskId, updatedFields);
   revalidatePath("/");
 };
@@ -89,7 +95,10 @@ export const deleteSubTaskAction = async (id: SubTask["id"]) => {
   await deleteSubTask(id);
   revalidatePath("/");
 };
-export const updateSubTaskAction = async (subtaskId: SubTask["id"], updatedFields: SubTask) => {
+export const updateSubTaskAction = async (
+  subtaskId: SubTask["id"],
+  updatedFields: SubTask
+) => {
   await updateSubTask(subtaskId, updatedFields);
   revalidatePath("/");
 };

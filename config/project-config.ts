@@ -1,9 +1,9 @@
 import { api } from "@/config/axios.config";
-import { type Project } from "@/app/api/projects/data";
-import { type Board } from "@/app/api/boards/data";
-import { type Task } from "@/app/api/tasks/data";
-import { type SubTask } from "@/app/api/tasks/data";
-import { type Comment } from "@/app/api/comments/data";
+import { type Project } from "@/api/projects/data";
+import { type Board } from "@/api/boards/data";
+import { type Task } from "@/api/tasks/data";
+import { type SubTask } from "@/api/tasks/data";
+import { type Comment } from "@/api/comments/data";
 export const getProjects = async () => {
   const response = await api.get("/projects");
   return response.data;
@@ -86,7 +86,10 @@ export const deleteSubTask = async (id: SubTask["id"]) => {
   await api.delete(`/tasks/subtasks/${id}`);
 };
 
-export const updateSubTask = async (subtaskId: SubTask["id"], updatedFields: SubTask) => {
+export const updateSubTask = async (
+  subtaskId: SubTask["id"],
+  updatedFields: SubTask
+) => {
   try {
     const response = await api.put(
       `/tasks/subtasks/${subtaskId}`,
