@@ -1,6 +1,6 @@
 "use client";
 import AdvancedTable from "@/components/(tables)/data-table/advanced";
-import {users} from "@/api/users/data";
+import {users} from "@/app/api/users/data";
 import { iUser } from "@/models/data-models";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "@/components/(tables)/data-table/advanced/components/data-table-column-header";
