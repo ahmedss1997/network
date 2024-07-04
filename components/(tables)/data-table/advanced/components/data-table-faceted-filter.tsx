@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { Column } from "@tanstack/react-table";
-interface Option {
+export interface Option {
   value: string;
   label: string;
   icon?: React.ComponentType<{ className?: string }>;

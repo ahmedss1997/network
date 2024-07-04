@@ -27,12 +27,14 @@ import {
 
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
-interface DataTableProps<TData> {
+import { Option } from "./data-table-faceted-filter";
+export interface DataTableProps<TData> {
   columns: ColumnDef<TData>[];
   data: TData[];
-  searchBy: string
+  searchBy: string;
+  statuses: Option[];
 }
-export function DataTable<TData>({ columns, data, searchBy }: DataTableProps<TData>) {
+export function DataTable<TData>({ columns, data, searchBy, statuses }: DataTableProps<TData>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -62,7 +64,7 @@ export function DataTable<TData>({ columns, data, searchBy }: DataTableProps<TDa
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} searchBy={searchBy} />
+      <DataTableToolbar table={table} searchBy={searchBy} statuses={statuses} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>

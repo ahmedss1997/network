@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DataTableViewOptions } from "./data-table-view-options";
 
-import { priorities, statuses } from "../data/data";
-import { DataTableFacetedFilter } from "./data-table-faceted-filter";
+import { priorities } from "../data/data";
+import { DataTableFacetedFilter, Option } from "./data-table-faceted-filter";
 import { Table } from "@tanstack/react-table";
-export function DataTableToolbar({ table, searchBy }: {table: Table<any>, searchBy: string}) {
+export function DataTableToolbar({ table, searchBy, statuses }: {table: Table<any>, searchBy: string, statuses: Option[]}) {
   const table1 = table;
   const isFiltered = table1.getState().columnFilters.length > 0;
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
