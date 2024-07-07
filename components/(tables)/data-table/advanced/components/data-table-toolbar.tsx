@@ -9,20 +9,19 @@ import { priorities } from "../data/data";
 import { DataTableFacetedFilter, Option } from "./data-table-faceted-filter";
 import { Table } from "@tanstack/react-table";
 export function DataTableToolbar({ table, searchBy, statuses }: {table: Table<any>, searchBy: string, statuses: Option[]}) {
-  const table1 = table;
-  const isFiltered = table1.getState().columnFilters.length > 0;
+  const isFiltered = table.getState().columnFilters.length > 0;
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    table1.getColumn(searchBy)?.setFilterValue(value);
+    table.getColumn(searchBy)?.setFilterValue(value);
   };
-  const statusColumn = table1.getColumn("status");
-  const priorityColumn = table1.getColumn("priority");
+  const statusColumn = table.getColumn("status");
+  const priorityColumn = table.getColumn("priority");
 
   return (
     <div className="flex flex-1 flex-wrap items-center gap-2">
       <Input
         placeholder="Filter..."
-        value={table1.getColumn(searchBy)?.getFilterValue() as string || ""}
+        value={table.getColumn(searchBy)?.getFilterValue() as string || ""}
         onChange={handleFilterChange}
         className="h-8 min-w-[200px] max-w-sm"
       />
@@ -44,14 +43,14 @@ export function DataTableToolbar({ table, searchBy, statuses }: {table: Table<an
       {isFiltered && (
         <Button
           variant="outline"
-          onClick={() => table1.resetColumnFilters()}
+          onClick={() => table.resetColumnFilters()}
           className="h-8 px-2 lg:px-3"
         >
           Reset
           <X className="ltr:ml-2 rtl:mr-2 h-4 w-4" />
         </Button>
       )}
-      <DataTableViewOptions table={table1} />
+      <DataTableViewOptions table={table} />
     </div>
 
   );
