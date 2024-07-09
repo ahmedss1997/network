@@ -9,12 +9,13 @@ import {
   Tooltip,
   Legend,
   ArcElement,
+  ChartData,
 } from "chart.js";
 import { hslToHex, hexToRGB } from "@/lib/utils";
 import { useThemeStore } from "@/store";
 import { useTheme } from "next-themes";
 import { themes } from "@/config/thems";
-import { Doughnut } from "react-chartjs-2";
+import { Doughnut, Pie } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -25,8 +26,12 @@ ChartJS.register(
   Legend,
   ArcElement
 );
-
-const PieChart = ({ height = 350 }) => {
+export interface iOptions {
+  responsive: boolean;
+  plugins: object;
+  maintainAspectRatio: boolean;
+}
+const PieChart = ({ height = 350, data, options }: {height?: number, data?: ChartData<"pie", number[], string>, options?: iOptions}) => {
   const { theme: config, setTheme: setConfig } = useThemeStore();
   const { theme: mode } = useTheme();
 
@@ -42,7 +47,7 @@ const PieChart = ({ height = 350 }) => {
   const rgbWarning = hexToRGB(hslToHex(hslWarning), 0.5);
   const rgbSuccess = hexToRGB(hslToHex(hslSuccess), 0.5);
 
-  const data: any = {
+  const defaultData: ChartData<"pie", number[], string> = {
     labels: ["Primary", "Info", "Warning", "Success"],
     datasets: [
       {
@@ -52,7 +57,7 @@ const PieChart = ({ height = 350 }) => {
       },
     ],
   };
-  const options: any = {
+  const defaultOptions: iOptions = {
     responsive: true,
     plugins: {
       legend: {
@@ -69,9 +74,9 @@ const PieChart = ({ height = 350 }) => {
 
   return (
     <div>
-      <Doughnut
-        options={options}
-        data={data}
+      <Pie
+        options={options || defaultOptions}
+        data={data || defaultData}
         height={height}
       />
     </div>
