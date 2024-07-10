@@ -27,7 +27,7 @@ const DataTablePage = () => {
           <CardTitle>Advanced Table</CardTitle>
         </CardHeader>
         <CardContent >
-          <AdvancedTable />
+          <AdvancedTable columns={[]} data={[]} searchBy={""} statuses={[]} />
         </CardContent>
       </Card>
       <Card>
