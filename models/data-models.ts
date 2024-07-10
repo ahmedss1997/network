@@ -36,6 +36,38 @@ export interface iUser {
   group_details: any;
 }
 
+export interface Tickets {
+  id: number;
+  ID: string,
+  Date: string;
+  username: string;
+  firstname: string;
+  lastname: string;
+  status: string;
+}
+
+export interface Groups {
+  id: number;
+  Name: string;
+  Description: string;
+  Users: string;
+  Managers: string;
+  status: Status;
+}
+
+export interface Managers {
+  id: number;
+  username: string;
+  firstname: string;
+  lastname: string;
+  Balance: string;
+  Debts: string;
+  Permissions: string;
+  Parent: string;
+  Users: string;
+  status: Status;
+}
+
 export interface Status {
   status: boolean;
   traffic: boolean;

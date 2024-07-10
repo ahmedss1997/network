@@ -1,4 +1,4 @@
-import { iUser } from "@/models/data-models";
+import { Groups, iUser, Managers, Tickets } from "@/models/data-models";
 
 export const users = [
   {
@@ -186,3 +186,207 @@ export const users = [
     group_details: null,
   },
 ] as iUser[];
+
+export const tickets = [
+  {
+    id: 7,
+    ID: "1",
+    Date: "2024-07-01 14:33:54",
+    username: "demo1",
+    firstname: "Rick",
+    lastname: "James",
+    status: "opened",
+  },
+  {
+    id: 8,
+    ID: "2",
+    Date: "2024-07-01 14:33:54",
+    username: "demo2",
+    firstname: "Miller",
+    lastname: "Pascal",
+    status: "solved",
+  },
+  {
+    id: 9,
+    ID: "3",
+    Date: "2024-07-01 14:33:54",
+    username: "demo3",
+    firstname: "Tyson",
+    lastname: "Edge",
+    status: "solved",
+  },
+  {
+    id: 10,
+    ID: "4",
+    Date: "2024-07-01 14:33:54",
+    username: "demo4",
+    firstname: "Gabriel",
+    lastname: "Andrews",
+    status: "solved",
+  },
+  {
+    id: 11,
+    ID: "5",
+    Date: "2024-07-01 14:33:54",
+    username: "demo4",
+    firstname: "Gabriel",
+    lastname: "Andrews",
+    status: "solved",
+  },
+] as Tickets[];
+
+export const groups = [
+  {
+    id: 7,
+    Name: "demo1",
+    Description: "lorem ipsum dolor sit amet",
+    Users: "James",
+    Managers: "Test",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+  {
+    id: 8,
+    Name: "demo2",
+    Description: "lorem ipsum dolor sit amet",
+    Users: "James",
+    Managers: "Test",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+  {
+    id: 9,
+    Name: "demo3",
+    Description: "lorem ipsum dolor sit amet",
+    Users: "James",
+    Managers: "Test",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+  {
+    id: 10,
+    Name: "demo4",
+    Description: "lorem ipsum dolor sit amet",
+    Users: "James",
+    Managers: "Test",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+  {
+    id: 11,
+    Name: "demo5",
+    Description: "lorem ipsum dolor sit amet",
+    Users: "James",
+    Managers: "Test",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+] as Groups[];
+
+export const managers = [
+  {
+    id: 7,
+    username: "demo1",
+    firstname: "Miller",
+    lastname: "Pascal",
+    Balance: "Test",
+    Debts: "Test",
+    Permissions: "Test",
+    Parent: "Test",
+    Users: "James",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+  {
+    id: 8,
+    username: "demo1",
+    firstname: "Miller",
+    lastname: "Pascal",
+    Balance: "Test",
+    Debts: "Test",
+    Permissions: "Test",
+    Parent: "Test",
+    Users: "James",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+  {
+    id: 9,
+    username: "demo1",
+    firstname: "Miller",
+    lastname: "Pascal",
+    Balance: "Test",
+    Debts: "Test",
+    Permissions: "Test",
+    Parent: "Test",
+    Users: "James",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+  {
+    id: 10,
+    username: "demo1",
+    firstname: "Miller",
+    lastname: "Pascal",
+    Balance: "Test",
+    Debts: "Test",
+    Permissions: "Test",
+    Parent: "Test",
+    Users: "James",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+  {
+    id: 11,
+    username: "demo1",
+    firstname: "Miller",
+    lastname: "Pascal",
+    Balance: "Test",
+    Debts: "Test",
+    Permissions: "Test",
+    Parent: "Test",
+    Users: "James",
+    status: {
+      status: false,
+      traffic: true,
+      expiration: false,
+      uptime: true,
+    },
+  },
+] as Managers[];

@@ -1,4 +1,5 @@
-import { DashBoard, User, List } from "@/components/svg";
+import { DashBoard, User, List, Cart } from "@/components/svg";
+import { Users } from "lucide-react";
 
 export interface MenuItemProps {
   title: string;
@@ -27,6 +28,68 @@ export const menusConfig = {
           icon: List,
           href: "/users/usersList",
         },
+        {
+          title: "Online Users",
+          icon: List,
+          href: "/users/onlineUsers",
+        },
+        {
+          title: "Support Tickets",
+          icon: List,
+          href: "/users/supportTickets",
+        },
+      ],
+    },
+    {
+      title: "Groups",
+      icon: Users,
+      href: "/groups",
+    },
+    {
+      title: "NewGroups",
+      icon: Users,
+      href: "/newsGroup",
+    },
+    {
+      title: "Managers",
+      icon: DashBoard,
+      href: "/managers",
+    },
+    {
+      title: "Nas",
+      icon: DashBoard,
+      href: "/nas",
+    },
+    {
+      title: "Cards System",
+      icon: Cart,
+      href: "/cards",
+    },
+    {
+      title: "Profiles",
+      icon: DashBoard,
+      href: "/profile",
+      child: [
+        {
+          title: "Profiles List",
+          icon: List,
+          href: "/users/profilesList",
+        },
+        {
+          title: "Pricing List",
+          icon: List,
+          href: "/users/pricingList",
+        },
+        {
+          title: "Usage Notifications",
+          icon: List,
+          href: "/users/notifications",
+        },
+        {
+          title: "Addons",
+          icon: List,
+          href: "/users/addons",
+        },
       ],
     },
   ],
@@ -45,6 +108,68 @@ export const menusConfig = {
             title: "Users List",
             icon: List,
             href: "/users/usersList",
+          },
+          {
+            title: "Online Users",
+            icon: List,
+            href: "/users/onlineUsers",
+          },
+          {
+            title: "Support Tickets",
+            icon: List,
+            href: "/users/supportTickets",
+          },
+        ],
+      },
+      {
+        title: "Groups",
+        icon: Users,
+        href: "/groups",
+      },
+      {
+        title: "NewGroups",
+        icon: Users,
+        href: "/newsGroup",
+      },
+      {
+        title: "Managers",
+        icon: DashBoard,
+        href: "/managers",
+      },
+      {
+        title: "Nas",
+        icon: DashBoard,
+        href: "/nas",
+      },
+      {
+        title: "Cards System",
+        icon: Cart,
+        href: "/cards",
+      },
+      {
+        title: "Profiles",
+        icon: DashBoard,
+        href: "/profile",
+        child: [
+          {
+            title: "Profiles List",
+            icon: List,
+            href: "/users/profilesList",
+          },
+          {
+            title: "Pricing List",
+            icon: List,
+            href: "/users/pricingList",
+          },
+          {
+            title: "Usage Notifications",
+            icon: List,
+            href: "/users/notifications",
+          },
+          {
+            title: "Addons",
+            icon: List,
+            href: "/users/addons",
           },
         ],
       },
@@ -67,6 +192,68 @@ export const menusConfig = {
             title: "Users List",
             icon: List,
             href: "/users/usersList",
+          },
+          {
+            title: "Online Users",
+            icon: List,
+            href: "/users/onlineUsers",
+          },
+          {
+            title: "Support Tickets",
+            icon: List,
+            href: "/users/supportTickets",
+          },
+        ],
+      },
+      {
+        title: "Groups",
+        icon: Users,
+        href: "/groups",
+      },
+      {
+        title: "NewGroups",
+        icon: Users,
+        href: "/newsGroup",
+      },
+      {
+        title: "Managers",
+        icon: DashBoard,
+        href: "/managers",
+      },
+      {
+        title: "Nas",
+        icon: DashBoard,
+        href: "/nas",
+      },
+      {
+        title: "Cards System",
+        icon: Cart,
+        href: "/cards",
+      },
+      {
+        title: "Profiles",
+        icon: DashBoard,
+        href: "/profile",
+        child: [
+          {
+            title: "Profiles List",
+            icon: List,
+            href: "/users/profilesList",
+          },
+          {
+            title: "Pricing List",
+            icon: List,
+            href: "/users/pricingList",
+          },
+          {
+            title: "Usage Notifications",
+            icon: List,
+            href: "/users/notifications",
+          },
+          {
+            title: "Addons",
+            icon: List,
+            href: "/users/addons",
           },
         ],
       },
