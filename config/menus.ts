@@ -50,6 +50,11 @@ export const menusConfig = {
       icon: Users,
       href: "/newsGroup",
     },
+    // {
+    //   title: "NewUser",
+    //   icon: Users,
+    //   href: "/newUser",
+    // },
     {
       title: "Managers",
       icon: DashBoard,
@@ -130,6 +135,11 @@ export const menusConfig = {
         title: "NewGroups",
         icon: Users,
         href: "/newsGroup",
+      },
+      {
+        title: "NewUser",
+        icon: Users,
+        href: "/newUser",
       },
       {
         title: "Managers",
@@ -214,6 +224,11 @@ export const menusConfig = {
         title: "NewGroups",
         icon: Users,
         href: "/newsGroup",
+      },
+      {
+        title: "NewUser",
+        icon: Users,
+        href: "/newUser",
       },
       {
         title: "Managers",

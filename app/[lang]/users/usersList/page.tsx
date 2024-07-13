@@ -28,133 +28,137 @@ export default function UsersLists() {
       }
     ];
     const columns: ColumnDef<iUser>[] = [
-        {
-          accessorKey: "status",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Status" />
-          ),
-          cell: ({ row }) => {
-            const status = row.getValue("status");
-             return (<div className={`w-4 h-4 ${status == "Active" ? "bg-success" : "bg-warning"}`}></div>)
-          },
-          enableSorting: true,
-          enableHiding: false,
+      {
+        accessorKey: "status",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Status" />
+        ),
+        cell: ({ row }) => {
+          const status = row.getValue("status");
+            return (<div className={`w-4 h-4 ${status == "Active" ? "bg-success" : "bg-warning"}`}></div>)
         },
-        {
-          accessorKey: "username",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="User Name" />
-          ),
-          cell: ({ row }) => <div>{row.getValue("username")}</div>,
-          enableSorting: true,
-          enableHiding: false,
+        enableSorting: true,
+        enableHiding: false,
+      },
+      {
+        accessorKey: "username",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="User Name" />
+        ),
+        cell: ({ row }) => <div>{row.getValue("username")}</div>,
+        enableSorting: true,
+        enableHiding: false,
+      },
+      {
+        accessorKey: "firstname",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="First Name" />
+        ),
+        cell: ({ row }) => <div>{row.getValue("firstname")}</div>,
+        enableSorting: true,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "lastname",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Last Name" />
+        ),
+        cell: ({ row }) => <div>{row.getValue("lastname")}</div>,
+        enableSorting: true,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "expiration",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Expiration" />
+        ),
+        cell: ({ row }) => <div>{row.getValue("expiration")}</div>,
+        enableSorting: true,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "parent_username",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Parent" />
+        ),
+        cell: ({ row }) => <div className="text-start">{row.getValue("parent_username")}</div>,
+        enableSorting: true,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "profile_details",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Profile" />
+        ),
+        cell: ({ row }) => {
+          const name = (row.getValue("profile_details") as any).name;
+            return (<div>{name}</div>)
         },
-        {
-          accessorKey: "firstname",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="First Name" />
-          ),
-          cell: ({ row }) => <div>{row.getValue("firstname")}</div>,
-          enableSorting: true,
-          enableHiding: true,
-        },
-        {
-          accessorKey: "lastname",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Last Name" />
-          ),
-          cell: ({ row }) => <div>{row.getValue("lastname")}</div>,
-          enableSorting: true,
-          enableHiding: true,
-        },
-        {
-          accessorKey: "expiration",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Expiration" />
-          ),
-          cell: ({ row }) => <div>{row.getValue("expiration")}</div>,
-          enableSorting: true,
-          enableHiding: true,
-        },
-        {
-          accessorKey: "parent_username",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Parent" />
-          ),
-          cell: ({ row }) => <div className="text-start">{row.getValue("parent_username")}</div>,
-          enableSorting: true,
-          enableHiding: true,
-        },
-        {
-          accessorKey: "profile_details",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Profile" />
-          ),
-          cell: ({ row }) => {
-            const name = (row.getValue("profile_details") as any).name;
-             return (<div>{name}</div>)
-          },
-          enableSorting: true,
-          enableHiding: true,
-        },
-        {
-          accessorKey: "loan_balance",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Debts" />
-          ),
-          cell: ({ row }) => <div className="text-start">{row.getValue("loan_balance") || 0} $</div>,
-          enableSorting: true,
-          enableHiding: true,
-        },
-        {
-          accessorKey: "daily_traffic_details",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Daily Traffic" />
-          ),
-          cell: ({ row }) => <div className="text-start">{row.getValue("daily_traffic_details") || 0}</div>,
-          enableSorting: true,
-          enableHiding: true,
-        },
-        {
-          accessorKey: "remaining_days",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Remaining Days" />
-          ),
-          cell: ({ row }) => <div className="text-start">{row.getValue("remaining_days") || 0}</div>,
-          enableSorting: true,
-          enableHiding: true,
-        },
-        {
-          accessorKey: "id",
-          header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="actions" />
-          ),
-          cell: ({row}) => (<div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="h-8">
-                  <Menu />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="text-start w-[120px] bg-background shadow-lg border p-3 m-3">
-                <DropdownMenuLabel className="flex items-center" role="button">
-                  <EyeIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>View</span> 
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator className="my-3" />
-                <DropdownMenuLabel className="flex items-center" role="button">
-                  <PencilIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>Edit</span> 
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator className="my-3" />
-                <DropdownMenuLabel className="flex items-center" role="button" onClick={() => handleOpenDeleteModal(row.getValue("id"))}>
-                  <TrashIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>Delete</span>
-                </DropdownMenuLabel>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>),
-          enableSorting: false,
-          enableHiding: false,
-        },
-      ];
+        enableSorting: true,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "loan_balance",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Debts" />
+        ),
+        cell: ({ row }) => <div className="text-start">{row.getValue("loan_balance") || 0} $</div>,
+        enableSorting: true,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "daily_traffic_details",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Daily Traffic" />
+        ),
+        cell: ({ row }) => <div className="text-start">{row.getValue("daily_traffic_details") || 0}</div>,
+        enableSorting: true,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "remaining_days",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Remaining Days" />
+        ),
+        cell: ({ row }) => <div className="text-start">{row.getValue("remaining_days") || 0}</div>,
+        enableSorting: true,
+        enableHiding: true,
+      },
+      {
+        accessorKey: "id",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="actions" />
+        ),
+        cell: ({row}) => (<div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="h-8">
+                <Menu />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="text-start w-[120px] bg-background shadow-lg border p-3 m-3">
+              <DropdownMenuLabel className="flex items-center" role="button">
+                <EyeIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>View</span> 
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator className="my-3" />
+              <DropdownMenuLabel className="flex items-center" role="button">
+                <EyeIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>Rename</span> 
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator className="my-3" />
+              <DropdownMenuLabel className="flex items-center" role="button">
+                <PencilIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>Edit</span> 
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator className="my-3" />
+              <DropdownMenuLabel className="flex items-center" role="button" onClick={() => handleOpenDeleteModal(row.getValue("id"))}>
+                <TrashIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>Delete</span>
+              </DropdownMenuLabel>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>),
+        enableSorting: false,
+        enableHiding: false,
+      },
+    ];
     // delete modal state
     const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
     const [eventIdToDelete, setEventIdToDelete] = useState<string | null>(null);
@@ -175,20 +179,19 @@ export default function UsersLists() {
         toast.error("Something went wrong");
       }
     };  
-      
     const handleOpenDeleteModal = (eventId: string) => {
       setEventIdToDelete(eventId);
       setDeleteModalOpen(true);
     };
     return (
     <div className="bg-background py-6 px-3 rounded">
-        <AdvancedTable data={computedUsers} columns={columns} searchBy="username" statuses={statuses} />
-        <DeleteConfirmationDialog
-          open={deleteModalOpen}
-          onClose={() => setDeleteModalOpen(false)}
-          onConfirm={onDeleteEventAction}
-          defaultToast={false}
-        />
+      <AdvancedTable data={computedUsers} columns={columns} searchBy="username" statuses={statuses} />
+      <DeleteConfirmationDialog
+        open={deleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirm={onDeleteEventAction}
+        defaultToast={false}
+      />
     </div>
     );
 }
