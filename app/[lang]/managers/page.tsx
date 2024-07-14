@@ -12,9 +12,35 @@ import DeleteConfirmationDialog from "@/components/delete-confirmation-dialog";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { deleteEventAction } from "@/action/calendar-action";
+import { Checkbox } from "@/components/ui/checkbox";
+import { UsersActionsButton } from "../users/actionsButton";
 export default function UsersLists() {
     const computedManagers = managers;
     const columns: ColumnDef<Managers>[] = [
+      {
+        id: "select",
+        header: ({ table }) => (
+          <Checkbox
+            checked={
+              table.getIsAllPageRowsSelected() ||
+              (table.getIsSomePageRowsSelected() && "indeterminate")
+            }
+            onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+            aria-label="Select all"
+            className="translate-y-0.5"
+          />
+        ),
+        cell: ({ row }) => (
+          <Checkbox
+            checked={row.getIsSelected()}
+            onCheckedChange={(value) => row.toggleSelected(!!value)}
+            aria-label="Select row"
+            className="translate-y-0.5"
+          />
+        ),
+        enableSorting: false,
+        enableHiding: false,
+      },
       {
         accessorKey: "username",
         header: ({ column }) => (
@@ -145,13 +171,16 @@ export default function UsersLists() {
     };
     return (
     <div className="bg-background py-6 px-3 rounded">
-        <AdvancedTable data={computedManagers} columns={columns} searchBy="username" statuses={[]} />
-        <DeleteConfirmationDialog
-          open={deleteModalOpen}
-          onClose={() => setDeleteModalOpen(false)}
-          onConfirm={onDeleteEventAction}
-          defaultToast={false}
-        />
+      <div className="text-center lg:text-start mb-6">
+        <UsersActionsButton title={"actions"} />
+      </div>
+      <AdvancedTable data={computedManagers} columns={columns} searchBy="username" statuses={[]} />
+      <DeleteConfirmationDialog
+        open={deleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirm={onDeleteEventAction}
+        defaultToast={false}
+      />
     </div>
     );
 }

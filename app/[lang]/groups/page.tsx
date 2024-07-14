@@ -12,9 +12,35 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { deleteEventAction } from "@/action/calendar-action";
 import Link from "next/link";
+import { Checkbox } from "@/components/ui/checkbox";
+import { UsersActionsButton } from "../users/actionsButton";
 export default function UsersLists() {
     const computedGroups = groups;
     const columns: ColumnDef<Groups>[] = [
+      {
+        id: "select",
+        header: ({ table }) => (
+          <Checkbox
+            checked={
+              table.getIsAllPageRowsSelected() ||
+              (table.getIsSomePageRowsSelected() && "indeterminate")
+            }
+            onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+            aria-label="Select all"
+            className="translate-y-0.5"
+          />
+        ),
+        cell: ({ row }) => (
+          <Checkbox
+            checked={row.getIsSelected()}
+            onCheckedChange={(value) => row.toggleSelected(!!value)}
+            aria-label="Select row"
+            className="translate-y-0.5"
+          />
+        ),
+        enableSorting: false,
+        enableHiding: false,
+      },
       {
         accessorKey: "Name",
         header: ({ column }) => (
@@ -65,10 +91,9 @@ export default function UsersLists() {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="text-start w-[120px] bg-background shadow-lg border p-3 m-3">
               <DropdownMenuLabel className="flex items-center" role="button">
-                <Plus className="w-5 h-5 ltr:mr-2 rtl:ml-2" /> 
-                <span>
-                  <Link href="#">New</Link>
-                </span >
+                <Link href='/groups/newsGroup' className="flex items-center">
+                  <Plus className="w-4 h-4 ltr:mr-2 rtl:ml-2" /> <span> New </span> 
+                </Link>
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="my-3" />
               <DropdownMenuLabel className="flex items-center" role="button">
@@ -112,13 +137,16 @@ export default function UsersLists() {
     };
     return (
     <div className="bg-background py-6 px-3 rounded">
-        <AdvancedTable data={computedGroups} columns={columns} searchBy="username" statuses={[]} />
-        <DeleteConfirmationDialog
-          open={deleteModalOpen}
-          onClose={() => setDeleteModalOpen(false)}
-          onConfirm={onDeleteEventAction}
-          defaultToast={false}
-        />
+      <div className="text-center lg:text-start mb-6">
+        <UsersActionsButton title={"actions"} />
+      </div>
+      <AdvancedTable data={computedGroups} columns={columns} searchBy="username" statuses={[]} />
+      <DeleteConfirmationDialog
+        open={deleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirm={onDeleteEventAction}
+        defaultToast={false}
+      />
     </div>
     );
 }

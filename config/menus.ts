@@ -46,16 +46,6 @@ export const menusConfig = {
       href: "/groups",
     },
     {
-      title: "NewGroups",
-      icon: Users,
-      href: "/newsGroup",
-    },
-    // {
-    //   title: "NewUser",
-    //   icon: Users,
-    //   href: "/newUser",
-    // },
-    {
       title: "Managers",
       icon: DashBoard,
       href: "/managers",
@@ -130,16 +120,6 @@ export const menusConfig = {
         title: "Groups",
         icon: Users,
         href: "/groups",
-      },
-      {
-        title: "NewGroups",
-        icon: Users,
-        href: "/newsGroup",
-      },
-      {
-        title: "NewUser",
-        icon: Users,
-        href: "/newUser",
       },
       {
         title: "Managers",
@@ -219,16 +199,6 @@ export const menusConfig = {
         title: "Groups",
         icon: Users,
         href: "/groups",
-      },
-      {
-        title: "NewGroups",
-        icon: Users,
-        href: "/newsGroup",
-      },
-      {
-        title: "NewUser",
-        icon: Users,
-        href: "/newUser",
       },
       {
         title: "Managers",

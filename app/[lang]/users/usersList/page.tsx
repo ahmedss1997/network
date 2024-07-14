@@ -6,12 +6,19 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "@/components/(tables)/data-table/advanced/components/data-table-column-header";
 import { Button } from "@/components/ui/button";
 import { Option } from "@/components/(tables)/data-table/advanced/components/data-table-faceted-filter";
-import {EyeIcon, Menu, PencilIcon, TrashIcon } from "lucide-react";
+import {EyeIcon, Menu, PencilIcon, TrashIcon, Plus } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import DeleteConfirmationDialog from "@/components/delete-confirmation-dialog";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { deleteEventAction } from "@/action/calendar-action";
+import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { UsersActionsButton } from "../actionsButton";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 export default function UsersLists() {
     const computedUsers = users.map(x => {
       const status = x.status.status ? "Active" : "Expired";
@@ -28,6 +35,30 @@ export default function UsersLists() {
       }
     ];
     const columns: ColumnDef<iUser>[] = [
+      {
+        id: "select",
+        header: ({ table }) => (
+          <Checkbox
+            checked={
+              table.getIsAllPageRowsSelected() ||
+              (table.getIsSomePageRowsSelected() && "indeterminate")
+            }
+            onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+            aria-label="Select all"
+            className="translate-y-0.5"
+          />
+        ),
+        cell: ({ row }) => (
+          <Checkbox
+            checked={row.getIsSelected()}
+            onCheckedChange={(value) => row.toggleSelected(!!value)}
+            aria-label="Select row"
+            className="translate-y-0.5"
+          />
+        ),
+        enableSorting: false,
+        enableHiding: false,
+      },
       {
         accessorKey: "status",
         header: ({ column }) => (
@@ -138,11 +169,20 @@ export default function UsersLists() {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="text-start w-[120px] bg-background shadow-lg border p-3 m-3">
               <DropdownMenuLabel className="flex items-center" role="button">
-                <EyeIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>View</span> 
+                <Link href='/users/newUser' className="flex items-center">
+                <Plus className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span> New </span> 
+                </Link>
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="my-3" />
-              <DropdownMenuLabel className="flex items-center" role="button">
-                <EyeIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>Rename</span> 
+              <DropdownMenuLabel role="button">
+                <DialogTrigger asChild>
+                  <div role="button"
+                    className="flex items-center"
+                    onClick={() => setRenameModalOpen(true)}
+                  >
+                    <EyeIcon className="w-3 h-3 ltr:mr-2 rtl:ml-2" /> <span>Rename</span> 
+                  </div>
+                </DialogTrigger>
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="my-3" />
               <DropdownMenuLabel className="flex items-center" role="button">
@@ -160,6 +200,7 @@ export default function UsersLists() {
       },
     ];
     // delete modal state
+    const [renameModalOpen, setRenameModalOpen] = useState<boolean>(false);
     const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
     const [eventIdToDelete, setEventIdToDelete] = useState<string | null>(null);
     const onDeleteEventAction = async () => {
@@ -185,6 +226,56 @@ export default function UsersLists() {
     };
     return (
     <div className="bg-background py-6 px-3 rounded">
+      <Dialog>
+      {
+        renameModalOpen ?
+        <DialogContent size="2xl">
+        <DialogHeader className="p-0">
+          <DialogTitle className="text-base font-medium text-default-700 ">
+            Create a New Account
+          </DialogTitle>
+        </DialogHeader>
+        <div>
+          <div className="h-[200px]">
+            <ScrollArea className="h-full">
+              <div className="sm:grid  sm:grid-cols-2 sm:gap-5 space-y-4 sm:space-y-0">
+                <div className="flex flex-col gap-2">
+                  <Label>First Name</Label>
+                  <Input type="text" placeholder="Enter first name" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label>Last Name</Label>
+                  <Input type="text" placeholder="Enter last name" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label>Email Address</Label>
+                  <Input type="email" placeholder="Enter email address" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label>Set Password</Label>
+                  <Input type="number" placeholder="Your phone number" />
+                </div>
+              </div>
+            </ScrollArea>
+          </div>
+          <div className=" flex justify-center gap-3">
+            <DialogClose asChild>
+              <Button type="button" variant="outline">
+                Cancel
+              </Button>
+            </DialogClose>
+            <Button type="button">Submit </Button>
+          </div>
+        </div>
+      </DialogContent>
+        : <></>
+      }
+      
+      <div className="text-center lg:text-start mb-6">
+        <DialogTrigger asChild>
+          <UsersActionsButton title={"actions"} />
+        </DialogTrigger>
+      </div>
       <AdvancedTable data={computedUsers} columns={columns} searchBy="username" statuses={statuses} />
       <DeleteConfirmationDialog
         open={deleteModalOpen}
@@ -192,6 +283,7 @@ export default function UsersLists() {
         onConfirm={onDeleteEventAction}
         defaultToast={false}
       />
+      </Dialog>
     </div>
     );
 }

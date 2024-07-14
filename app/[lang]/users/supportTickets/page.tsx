@@ -12,7 +12,8 @@ import DeleteConfirmationDialog from "@/components/delete-confirmation-dialog";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { deleteEventAction } from "@/action/calendar-action";
-import { Checkbox } from "@radix-ui/react-checkbox";
+import { UsersActionsButton } from "../actionsButton";
+import { Checkbox } from "@/components/ui/checkbox";
 export default function UsersLists() {
     const computedTickets = tickets;
     const statuses:Option[]  = [
@@ -164,13 +165,16 @@ export default function UsersLists() {
     };
     return (
     <div className="bg-background py-6 px-3 rounded">
-        <AdvancedTable data={computedTickets} columns={columns} searchBy="username" statuses={statuses} />
-        <DeleteConfirmationDialog
-          open={deleteModalOpen}
-          onClose={() => setDeleteModalOpen(false)}
-          onConfirm={onDeleteEventAction}
-          defaultToast={false}
-        />
+      <div className="text-center lg:text-start mb-6">
+        <UsersActionsButton title={"actions"} />
+      </div>
+      <AdvancedTable data={computedTickets} columns={columns} searchBy="username" statuses={statuses} />
+      <DeleteConfirmationDialog
+        open={deleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirm={onDeleteEventAction}
+        defaultToast={false}
+      />
     </div>
     );
 }
